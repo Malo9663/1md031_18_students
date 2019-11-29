@@ -1,0 +1,78 @@
+#head
+{
+  margin: 5px 5px;
+  border: 10px double #111111;
+  height: 10em;
+  overflow: hidden;
+}
+#header
+{
+  margin-left: 30%;
+  position: absolute;
+  top: 2em;
+}
+#picture
+{
+  opacity: 0.66;
+  width: 100%;
+}
+body
+{
+  font-family: "Times New Roman",serif;
+  font-size: 18px;
+}
+.firstSection
+{
+  margin: 5px 5px;
+  padding: 10px;
+  background: #111111;
+  color: #FFFFFF;
+  border: 10px double #FFFFFF;
+}
+.secondSection
+{
+  margin: 5px 5px;
+  padding: 10px;
+  border: 10px double #111111;
+}
+.burgerHeader
+{
+  font-weight: bold;
+  font-size: 1.17em;
+  margin-bottom: 20px;
+}
+.allergy
+{
+  text-decoration: underline;
+  text-decoration-color: #FFFFFF;
+}
+button{
+  margin: 20px 15px 5px;
+  height: 6em;
+  width: 15em;
+  font-size: 1em;
+
+}
+button:hover
+{
+  background-color: #FF0000;
+  cursor: pointer;
+}
+
+.wrapper {
+     display: grid;
+     grid-template-columns: repeat(auto-fill,15em);
+ }
+ .wrapper2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,20em);
+  }
+#ordermenu
+{
+  width: 100%;
+  margin: 5px 5px;
+  padding: 10px;
+  background: #111111;
+  color: #FFFFFF;
+  border: 10px double #FFFFFF;
+}
