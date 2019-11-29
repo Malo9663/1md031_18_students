@@ -1,9 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>DELI-VERY</title>
+        <title>Mäken Burgers</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="css/deli-very.css">
+
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script src="https://vuejs.org/js/vue.js"defer></script>
+        <script src="js/js_script.js" defer></script>
+        <script src="/vue/vue.js" defer></script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="js/vue_script.js" defer></script>
     </head>
     <body>
-        <h1>Hello World!!!</h1>
+      <main id = "menu">
+        <header id="head">
+            <img id="picture" src="/img/Bar.jpeg">
+            <h1 id="header">Välkommen till Mäken burgers</h1>
+        </header>
+        <section class="firstSection">
+                <div><h3>Välj en burgare</h3>
+                </div>
+                <p>Här beställer du hamburgare</p>
+                <div class="wrapper">
+                    <div v-for="burg in burgers">
+                        <div class = "burgerHeader">{{ burg.name }}</div>
+                        <img v-bind:src='burg.pic' width=250 height=187><br>
+                        <ul>
+                            <li v-for="ingredient in burg.ingriedents"> {{ingredient}}</li>
+                            <li> {{burg.kCal}} kCal </li>
+                            <li v-if=burg.lactose> Contains <span class="allergy"> lactose </span></li>
+                            <li v-if=burg.gluten> Contains <span class="allergy"> gluten </span></li>
+                        </ul>
+                        <input type="checkbox" v-model="chosen" v-bind:value="burg.name">Lägg till<br>
+                    </div>
+                </div>
+        </section>
+        <section class="secondSection">
+            <div><h3>Kundinfo</h3></div>
+            <div>Här lämnar du den nödvändiga informationen</div>
+            <h4>Leveransinfo:</h4>
+            <form>
+                <p>
+                    <label for="name">Fullständigt namn</label><br>
+                    <input type="text" v-model="customerName" name="n" required="required" placeholder="Namn">
+                </p>
+                <p>
+                    <label for="email">Email</label><br>
+                    <input type="email" v-model="email" name="em" placeholder="Emailadress">
+                </p>
+                <h1> Klicka var du bor! </h1>
+                <div class="view-box">
+                  <div id="dots" v-on:click="displayOrder">
+                    <div v-bind:style="{ left: details.x + 'px', top: details.y + 'px'}">
+                      T
+                    </div>
+                  </div>
+                </div>
+                <!--<p>
+                    <label for="adress">Adress</label><br>
+                    <input type="text" v-model="adress" name="ad" placeholder="Adressnamn">
+                </p>
+                <p>
+                    <label for="husnummer">Hus</label><br>
+                    <input type="text" v-model="houseNumber" name="hn" placeholder="Husnummer">
+                </p>-->
+                <p>
+                    <label for="betalning">Betalningsinformation</label><br>
+                    <select id="betalning" v-model="payment" name="Betalningsinformation">
+                        <option>Kort</option>
+                        <option>Faktura</option>
+                        <option>Swish</option>
+                        <option>Kontant</option>
+                    </select>
+                </p>
+                <p>
+                    Välj ditt kön:
+                </p>
+                    <input type="radio" v-model="gender" value="Man"> Man<br>
+                    <input type="radio" v-model="gender" value="Kvinna"> Kvinna<br>
+                    <input type="radio" v-model="gender" value="Icke-binär"> Icke-binär<br>
+                    <input type="radio" v-model="gender" value="Vill inte uppge"> Vill inte uppge<br>
+            </form>
+      </section>
+        <div class="wrapper2">
+        <div>
+            <button v-on:click="addOrder" type="submit"><img src="/img/send.jpeg" height="25" width="25"> Skicka in beställning</button>
+        </div>
+        <pre class=orderedItems id="ordermenu" v-bind="orderlist">{{orderlist}}</pre>
+      </div>
+      </main>
+      <footer>
+          <hr>
+            Mäken Burgers TM
+      </footer>
     </body>
 </html>
